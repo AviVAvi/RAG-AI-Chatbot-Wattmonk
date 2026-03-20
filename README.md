@@ -2,11 +2,14 @@
 
 An AI-powered chatbot that answers questions from multiple knowledge bases using Retrieval-Augmented Generation (RAG). Built as part of an AI internship assignment at Wattmonk.
 
+## Live Demo
+🌐 [https://rag-ai-chatbot-wattmonk-hgmzlycnf9pnfarytjf2nu.streamlit.app](https://rag-ai-chatbot-wattmonk-hgmzlycnf9pnfarytjf2nu.streamlit.app)
+
 ## Features
 
 ### Core
 - 🟡 **Wattmonk context** — answers questions about Wattmonk's services, technology, and company info
-- 🔵 **NEC context** — answers questions about NEC electrical code and solar installation regulations  
+- 🔵 **NEC context** — answers questions about NEC electrical code and solar installation regulations
 - ⚪ **General context** — handles everyday questions using Gemini's base knowledge
 - 🎯 **Confidence scoring** — shows how closely the retrieved context matched the query (green/yellow/red)
 - 🧠 **Conversation memory** — maintains context across multiple exchanges in the same chat
@@ -21,8 +24,8 @@ An AI-powered chatbot that answers questions from multiple knowledge bases using
 | Layer | Tool |
 |---|---|
 | Frontend | Streamlit |
-| Backend | FastAPI |
-| Vector Database | ChromaDB (local) |
+| Backend | FastAPI (local) / Streamlit (deployed) |
+| Vector Database | ChromaDB |
 | AI Model | Google Gemini 2.5 Flash |
 | Embeddings | Gemini Embedding 001 |
 
@@ -30,9 +33,9 @@ An AI-powered chatbot that answers questions from multiple knowledge bases using
 ```
 rag-chatbot-assignment/
 ├── backend/
-│   └── main.py          # FastAPI app — intent classification, retrieval, Gemini calls
+│   └── main.py          # FastAPI app — for local development with separate backend
 ├── frontend/
-│   └── app.py           # Streamlit chat UI with multi-chat and suggested questions
+│   └── app.py           # Streamlit app — contains full RAG logic for deployment
 ├── scripts/
 │   └── ingest.py        # One-time script to load PDFs into ChromaDB
 ├── data/
@@ -51,8 +54,6 @@ rag-chatbot-assignment/
 ```
 User (Streamlit UI)
       ↓
-FastAPI Backend (/chat endpoint)
-      ↓
 Intent Classifier (Gemini) → wattmonk / nec / general
       ↓
 ChromaDB Retriever → top 4 most relevant chunks
@@ -68,8 +69,8 @@ Streamlit UI → displays response + badges + confidence + suggestions
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-url>
-cd rag-chatbot-assignment
+git clone https://github.com/AviVAvi/RAG-AI-Chatbot-Wattmonk
+cd RAG-AI-Chatbot-Wattmonk
 ```
 
 ### 2. Create and activate virtual environment
@@ -101,29 +102,21 @@ Get a free API key at: https://aistudio.google.com
 python scripts/ingest.py
 ```
 
-### 7. Start the backend (Terminal 1)
-```bash
-uvicorn backend.main:app --reload --port 8000
-```
-
-### 8. Start the frontend (Terminal 2)
+### 7. Run the app
 ```bash
 streamlit run frontend/app.py
 ```
 
 Open http://localhost:8501 in your browser.
 
-## API Reference
+## API Reference (Local Development)
 
 ### POST /chat
 **Request:**
 ```json
 {
   "message": "What services does Wattmonk offer?",
-  "history": [
-    {"role": "user", "content": "Hi"},
-    {"role": "assistant", "content": "Hello! How can I help?"}
-  ]
+  "history": []
 }
 ```
 **Response:**
