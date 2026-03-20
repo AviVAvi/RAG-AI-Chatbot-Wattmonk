@@ -172,5 +172,3 @@ Based on testing during development:
 | Supported knowledge bases | 2 (Wattmonk + NEC) |
 | Max conversation history | 6 turns |
 | Chunks in vector database | 158 total |
-```
-
