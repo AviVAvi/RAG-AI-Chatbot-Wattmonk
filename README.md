@@ -5,6 +5,20 @@ An AI-powered chatbot that answers questions from multiple knowledge bases using
 ## Live Demo
 🌐 [https://rag-ai-chatbot-wattmonk-hgmzlycnf9pnfarytjf2nu.streamlit.app](https://rag-ai-chatbot-wattmonk-hgmzlycnf9pnfarytjf2nu.streamlit.app)
 
+## Screenshots
+
+### Main Interface
+![Main Interface](screenshots/Wattmonk%20AI%20Assistant%20Main%20Page.png)
+
+### Wattmonk Response with Confidence Score
+![Wattmonk Response](screenshots/Wattmonk%20related%20question%20with%20confidence%20score.png)
+
+### NEC Code Response with Confidence Score
+![NEC Response](screenshots/NEC%20related%20question%20with%20confidence%20score.png)
+
+### Suggested Follow-up Questions
+![Suggested Questions](screenshots/Suggested%20Follow-up%20questions%20.png)
+
 ## Features
 
 ### Core
@@ -40,6 +54,7 @@ rag-chatbot-assignment/
 │   └── ingest.py        # One-time script to load PDFs into ChromaDB
 ├── data/
 │   └── pdfs/            # PDF knowledge base documents
+├── screenshots/         # App screenshots
 ├── .env.example         # Environment variable template
 └── requirements.txt     # Python dependencies
 ```
@@ -109,34 +124,6 @@ streamlit run frontend/app.py
 
 Open http://localhost:8501 in your browser.
 
-## API Reference (Local Development)
-
-### POST /chat
-**Request:**
-```json
-{
-  "message": "What services does Wattmonk offer?",
-  "history": []
-}
-```
-**Response:**
-```json
-{
-  "response": "Wattmonk offers solar sales proposals...",
-  "source": "wattmonk",
-  "context_used": true,
-  "confidence": 79.8,
-  "suggested_questions": [
-    "How fast does Wattmonk deliver plansets?",
-    "What is Zippy?",
-    "How many states does Wattmonk cover?"
-  ]
-}
-```
-### GET /health
-```json
-Returns `{"status": "ok"}` if the backend is running.
-```
 ## User Guide
 
 ### How to use the chatbot
@@ -172,3 +159,31 @@ Based on testing during development:
 | Supported knowledge bases | 2 (Wattmonk + NEC) |
 | Max conversation history | 6 turns |
 | Chunks in vector database | 158 total |
+
+## API Reference (Local Development)
+
+### POST /chat
+**Request:**
+```json
+{
+  "message": "What services does Wattmonk offer?",
+  "history": []
+}
+```
+**Response:**
+```json
+{
+  "response": "Wattmonk offers solar sales proposals...",
+  "source": "wattmonk",
+  "context_used": true,
+  "confidence": 79.8,
+  "suggested_questions": [
+    "How fast does Wattmonk deliver plansets?",
+    "What is Zippy?",
+    "How many states does Wattmonk cover?"
+  ]
+}
+```
+
+### GET /health
+Returns `{"status": "ok"}` if the backend is running.
