@@ -133,8 +133,8 @@ Open http://localhost:8501 in your browser.
   ]
 }
 ```
-### GET /health
-Returns `{"status": "ok"}` if the backend is running.
+## GET /health
+### Returns `{"status": "ok"}` if the backend is running.
 ```
 ```
 ## User Guide
