@@ -132,6 +132,11 @@ Open http://localhost:8501 in your browser.
     "How many states does Wattmonk cover?"
   ]
 }
+```
+### GET /health
+Returns `{"status": "ok"}` if the backend is running.
+```
+```
 ## User Guide
 
 ### How to use the chatbot
@@ -169,5 +174,3 @@ Based on testing during development:
 | Chunks in vector database | 158 total |
 ```
 
-### GET /health
-Returns `{"status": "ok"}` if the backend is running.
