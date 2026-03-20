@@ -137,8 +137,6 @@ Open http://localhost:8501 in your browser.
 ```json
 Returns `{"status": "ok"}` if the backend is running.
 ```
-```
-```
 ## User Guide
 
 ### How to use the chatbot
